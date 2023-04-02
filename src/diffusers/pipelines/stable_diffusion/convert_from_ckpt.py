@@ -1177,7 +1177,9 @@ def download_from_original_stable_diffusion_ckpt(
 
     if model_type == "FrozenOpenCLIPEmbedder":
         text_model = convert_open_clip_checkpoint(checkpoint)
-        tokenizer = CLIPTokenizer.from_pretrained("stabilityai/stable-diffusion-2", subfolder="tokenizer")
+        # tokenizer = CLIPTokenizer.from_pretrained("stabilityai/stable-diffusion-2", subfolder="tokenizer")
+        tokenizer = CLIPTokenizer.from_pretrained("stabilityai/stable-diffusion-2", subfolder="tokenizer", model_max_length=512)
+        # tokenizer.model_max_length = 256
 
         if stable_unclip is None:
             if controlnet:
